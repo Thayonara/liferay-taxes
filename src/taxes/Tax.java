@@ -14,6 +14,10 @@ public abstract class Tax {
         if(mustApply(product)){
             doCalculation(product);
         }
+        if (next != null){
+            next.calculate(product);
+        }
+
         return product;
     }
 
