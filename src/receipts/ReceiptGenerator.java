@@ -28,7 +28,7 @@ public class ReceiptGenerator {
             }
             tax = tax.add(((s.getProduct().getValueAfterTaxes()).subtract(s.getProduct().getValue())).multiply(s.getQuantity()));
             total = total.add(s.getProduct().getValue().add((s.getProduct().getValueAfterTaxes()).subtract(s.getProduct().getValue())).multiply(s.getQuantity()));
-            description = description + "\n" + s.getQuantity() + " " + s.getProduct().getDescription() + ": $" + String.format("%.2f", s.getProduct().getValueAfterTaxes());
+            description = description + "\n" + s.getQuantity() + " " + s.getProduct().getDescription() + ": $" + String.format("%.2f", s.getProduct().getValueAfterTaxes().multiply(s.getQuantity()));
 
         }
         return new Receipt(description, tax, total);
