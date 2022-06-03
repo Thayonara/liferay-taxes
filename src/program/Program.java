@@ -24,7 +24,7 @@ public class Program {
     public static void main (String[] args) {
         try {
             List<Sale> sales = new ArrayList<Sale>();
-            File myObj = new File("input_1.txt");
+            File myObj = new File("input_3.txt");
             Scanner myReader = new Scanner(myObj);
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
