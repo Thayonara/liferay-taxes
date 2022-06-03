@@ -19,6 +19,16 @@ public class ReceiptGenerator {
         BigDecimal total = new BigDecimal("0");
         String description = "";
 
+        for(Sale s: sales){
+            s.setProduct(TaxCalculator.calculate(s.getProduct()));
+            if (s.getProduct().getValueAfterTaxes().subtract(s.getProduct().getValue()).multiply(s.getQuantity()).doubleValue() != 0){
+                s.getProduct().setValueAfterTaxes(s.getProduct().getValue().add(new RoundFiveCents().roundFiveCents((s.getProduct().getValueAfterTaxes()).subtract(s.getProduct().getValue()).multiply(s.getQuantity()))));
+            }
+            tax = tax.add(((s.getProduct().getValueAfterTaxes()).subtract(s.getProduct().getValue())).multiply(s.getQuantity()));
+            total = total.add(s.getProduct().getValue().add((s.getProduct().getValueAfterTaxes()).subtract(s.getProduct().getValue())).multiply(s.getQuantity()));
+            description = description + "\n" + s.getQuantity() + " " + s.getProduct().getDescription() + ": $" + String.format("%.2f", s.getProduct().getValueAfterTaxes());
+
+        }
         return new Receipt(description, tax, total);
     }
 
