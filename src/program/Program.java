@@ -15,6 +15,10 @@ import java.util.Scanner;
 
 public class Program {
 
+    private static final List<String> books = List.of("livro","romance","literatura","ficção", "HQs");
+    private static final List<String> medical = List.of("paracetamol","cartela de analgésicos","dipirona");
+    private static final List<String> foods = List.of("chocolate","pão","arroz","barra de chocolate","caixa de chocolates");
+    private static final List<String> imported = List.of("importados","importadas","importado","importada");
 
 
     public static void main (String[] args) {
@@ -27,6 +31,12 @@ public class Program {
                 String[] line = data.split(" ");
 
                 String good = (data.substring(data.indexOf(" "), data.indexOf(" por "))).trim();
+                for (String i: imported) {
+                    if(good.contains(i)) {
+                        good = good.replace(i, "").trim();
+                    }
+                }
+
                 int quantity = Integer.parseInt(line[0]);
                 BigDecimal value = new BigDecimal(line[line.length-1].replace(",",".").replace("$",""));
 
@@ -37,7 +47,13 @@ public class Program {
                         data.contains("importadas");
 
                 ProductType type = ProductType.GENERAL;
-
+                if(books.contains(good)){
+                    type = ProductType.BOOKS;
+                } else if(medical.contains(good)){
+                    type = ProductType.MEDICAL;
+                } else if(foods.contains(good)){
+                    type = ProductType.FOOD;
+                }
 
                 sales.add(new Sale(new Product(good, value, value, type, isImported),
                                     new BigDecimal(quantity)));
