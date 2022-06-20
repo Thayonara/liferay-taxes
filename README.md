@@ -5,8 +5,11 @@ Repositório destinado ao desafio de imposto sobre vendas para a vaga de back-en
 
 # Design Patterns
 
-Alguns padrões de "Gof" foram seguidos, como: Template Method, Chair of Responsability, Command...
+Alguns padrões de "Gof" foram seguidos, como: Template Method, Chair of Responsability, Strategy...
 
 
-Available Java environments:
-  java-11-openjdk (default)
+# Requisitos
+
+JDK11 ou OpenJDK11;
+Maven;
+
