@@ -8,8 +8,16 @@ Repositório destinado ao desafio de imposto sobre vendas para a vaga de back-en
 Alguns padrões de "Gof" foram seguidos, como: Template Method, Chair of Responsability, Strategy...
 
 
-# Requisitos
+# Tecnologia
 
-JDK11 ou OpenJDK11;
-Maven;
+Java,
+OpenJDK11,
+Maven,
+Intellij IDEA.
+
+# Run
+
+Dentro da pasta do projeto rode o seguinte comando:
+
+“java -jar taxes.jar”
 
