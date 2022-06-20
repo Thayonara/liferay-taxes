@@ -24,7 +24,7 @@ public class ReceiptGenerator {
 
             //round only when the product was taxed
             if (s.getProduct().getValueAfterTaxes().subtract(s.getProduct().getValue()).multiply(s.getQuantity()).doubleValue() != 0){
-                s.getProduct().setValueAfterTaxes(s.getProduct().getValue().add(new RoundFiveCents().roundFiveCents((s.getProduct().getValueAfterTaxes()).subtract(s.getProduct().getValue()).multiply(s.getQuantity()))));
+                s.getProduct().setValueAfterTaxes(s.getProduct().getValue().add(new RoundFiveCents().roundFiveCents((s.getProduct().getValueAfterTaxes()).subtract(s.getProduct().getValue()))));
             }
             tax = tax.add(((s.getProduct().getValueAfterTaxes()).subtract(s.getProduct().getValue())).multiply(s.getQuantity()));
             total = total.add(s.getProduct().getValue().add((s.getProduct().getValueAfterTaxes()).subtract(s.getProduct().getValue())).multiply(s.getQuantity()));
